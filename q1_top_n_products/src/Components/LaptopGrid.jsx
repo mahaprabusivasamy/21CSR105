@@ -80,8 +80,8 @@
 
 // export default LaptopGrid;
 import React, { useState, useEffect } from 'react';
-import { Grid, Card, CardContent, Typography, CircularProgress, Box } from '@mui/material';
-
+import { Grid, Card, CardContent, Typography, CircularProgress, Box ,CardMedia} from '@mui/material';
+import images from '../assets/laptop.jpg'
 const LaptopGrid = () => {
   const [laptops, setLaptops] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -92,7 +92,7 @@ const LaptopGrid = () => {
       try {
         const response = await fetch('http://localhost:3001/api/test/companies/AMZ/categories/Laptop/products?top=10&minPrice=1&maxPrice=10000', {
           headers: {
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzE4NjkxNzIzLCJpYXQiOjE3MTg2OTE0MjMsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6IjEwMDJiZWYwLThlY2ItNDE2MC05YjVkLWM5ZjVhODI1MGRhMCIsInN1YiI6Im1haGFwcmFidXNpdmFzYW15QGdtYWlsLmNvbSJ9LCJjb21wYW55TmFtZSI6ImFmZm9yZE1lZGljYWxzIiwiY2xpZW50SUQiOiIxMDAyYmVmMC04ZWNiLTQxNjAtOWI1ZC1jOWY1YTgyNTBkYTAiLCJjbGllbnRTZWNyZXQiOiJvTEZsV1RCVU1XV0Z4cEd3Iiwib3duZXJOYW1lIjoiTWFoYXByYWJ1Iiwib3duZXJFbWFpbCI6Im1haGFwcmFidXNpdmFzYW15QGdtYWlsLmNvbSIsInJvbGxObyI6IjIxY3NyMTA1In0.gSh9G0DoqqRqCQBClNQ-Ki5Pg4Y5x5_3B2lMiRCBZUA'
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzE4NjkzNDY5LCJpYXQiOjE3MTg2OTMxNjksImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6IjEwMDJiZWYwLThlY2ItNDE2MC05YjVkLWM5ZjVhODI1MGRhMCIsInN1YiI6Im1haGFwcmFidXNpdmFzYW15QGdtYWlsLmNvbSJ9LCJjb21wYW55TmFtZSI6ImFmZm9yZE1lZGljYWxzIiwiY2xpZW50SUQiOiIxMDAyYmVmMC04ZWNiLTQxNjAtOWI1ZC1jOWY1YTgyNTBkYTAiLCJjbGllbnRTZWNyZXQiOiJvTEZsV1RCVU1XV0Z4cEd3Iiwib3duZXJOYW1lIjoiTWFoYXByYWJ1Iiwib3duZXJFbWFpbCI6Im1haGFwcmFidXNpdmFzYW15QGdtYWlsLmNvbSIsInJvbGxObyI6IjIxY3NyMTA1In0.i_UhMWNDFjZaGtWk8bJmYkOXj6slBbJkDGCnd4UH_q8'
           }
         });
 
@@ -135,6 +135,12 @@ const LaptopGrid = () => {
       {laptops.map((laptop, index) => (
         <Grid item key={index} xs={12} sm={6} md={4}>
           <Card>
+          <CardMedia
+              component="img"
+              height="200"
+              image={images} // Assuming each laptop object has an `imageUrl` property
+              alt={laptop.productName}
+            />
             <CardContent>
               <Typography gutterBottom variant="h5" align='center' component="div">
                 {laptop.productName}
